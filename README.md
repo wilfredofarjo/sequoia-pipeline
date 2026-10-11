@@ -157,5 +157,13 @@ Consulta `docs/webodm_configuration.md` para una configuración inicial.
 Este repositorio no contiene TIFF/JPG originales, archivos `.dat`, nubes de puntos ni productos WebODM.
 
 ## Versión
-
-**v0.1.0** — primera versión pública del organizador, derivada del flujo experimental validado hasta v2.7.
+**Estado actual de desarrollo:**
+- Organización de los conjuntos de datos: validada
+- Reconstrucción SfM: validada para el 21-08-2026
+- Comparación SfM-IMU: experimental
+- Calibración de reflectancia: implementada
+- Ortomosaico de 4 bandas: validado
+- NDVI: validado para uso en flujos de trabajo
+- GNDVI: disponible
+- NDRE: bajo revisión radiométrica
+- Replicación de mayo/julio: pendiente
