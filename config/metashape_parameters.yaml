@@ -1,0 +1,60 @@
+metashape:
+  version: "2.2"
+  session_validated: "2026-08-21"
+
+alignment:
+  accuracy: High
+  generic_preselection: true
+  reference_preselection: false
+  key_point_limit: 40000
+  tie_point_limit: 0
+  exclude_stationary_tie_points: true
+  guided_image_matching: false
+  adaptive_camera_model_fitting: true
+
+scale_control:
+  scale_bar_accuracy_m: 0.03
+  control_bars:
+    CONT_A_CONT_B_m: 2.25
+    CONT_A_CONT_D_m: 5.80
+  approximate_checks:
+    CONT_C_CONT_B_m: 5.80
+    CONT_C_CONT_D_m: 2.25
+
+depth_maps:
+  quality: High
+  filtering: Mild
+
+mesh:
+  source_data: Depth maps
+  surface_type: Arbitrary (3D)
+  quality: High
+  face_count: High
+  interpolation: Enabled
+  calculate_vertex_colors: true
+  reuse_depth_maps: true
+
+orthomosaic:
+  type: Planar
+  projection_plane: Top XY
+  surface: Mesh
+  blending_mode: Mosaic
+  hole_filling: false
+  ghosting_filter: false
+  pixel_size_m: 0.00138395
+
+radiometric_calibration:
+  use_reflectance_panels: true
+  use_sun_sensor: false
+  normalize_band_sensitivity: true
+  panel_batch: "4001"
+  reflectance:
+    Green: 0.189
+    Red: 0.197
+    Red_edge: 0.221
+    NIR: 0.255
+
+spectral_indices:
+  NDVI: "(B4-B2)/(B4+B2)"
+  GNDVI: "(B4-B1)/(B4+B1)"
+  NDRE_status: "under_review"
