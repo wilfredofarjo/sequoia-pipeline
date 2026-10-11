@@ -1,6 +1,6 @@
-# Sequoia WebODM Pipeline
+# Sequoia Pipeline
 
-Flujo reproducible para organizar, validar y preparar imágenes multiespectrales **Parrot Sequoia** antes de su procesamiento en **WebODM / OpenDroneMap**.
+Flujo de trabajo reproducible para la organización de imágenes multispectrales de **Parrot Sequoia, reconstrucción SfM, calibración radiométrica y análisis de índices de vegetación utilizando WebODM y Agisoft Metashape**.
 
 ## Objetivo
 
