@@ -1,0 +1,5 @@
+band,reflectance,batch
+Green,0.189,4001
+Red,0.197,4001
+Red edge,0.221,4001
+NIR,0.255,4001
