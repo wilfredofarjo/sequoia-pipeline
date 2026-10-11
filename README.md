@@ -1,23 +1,26 @@
-# Sequoia Pipeline
+# Sequoia WebODM Pipeline
 
-Flujo de trabajo reproducible para la organización de imágenes multispectrales de **Parrot Sequoia, reconstrucción SfM, calibración radiométrica y análisis de índices de vegetación utilizando WebODM y Agisoft Metashape**.
+Flujo reproducible para organizar, auditar, reconstruir y analizar imágenes multiespectrales **Parrot Sequoia** mediante **WebODM / OpenDroneMap** y **Agisoft Metashape**.
 
-## Objetivo
+## Alcance
 
-El proyecto nació a partir de un conjunto de imágenes almacenadas entre la memoria interna de la cámara y la tarjeta SD, con fechas internas incorrectas y múltiples reinicios del reloj. El flujo permite:
+El proyecto nació como un organizador seguro de imágenes almacenadas entre la memoria interna de la cámara y la tarjeta SD, con fechas internas incorrectas y múltiples reinicios del reloj. La versión en desarrollo amplía ese flujo hacia:
 
-- inventariar imágenes de ambas fuentes;
-- identificar bandas `GRE`, `RED`, `REG`, `NIR` y `RGB`;
-- excluir miniaturas `.thumb` y archivos auxiliares;
-- detectar duplicados mediante SHA-256;
-- identificar capturas multiespectrales completas e incompletas;
-- mantener separadas las imágenes RGB del dataset multiespectral;
-- reconstruir sesiones de adquisición usando fuente, carpeta y bitácora;
-- generar un dataset final compatible con WebODM.
+- inventario y organización de imágenes;
+- identificación de bandas `GRE`, `RED`, `REG`, `NIR` y RGB;
+- detección de duplicados mediante SHA-256;
+- reconstrucción de sesiones reales a partir de bitácora;
+- preparación de datasets multiespectrales para WebODM;
+- reconstrucción SfM independiente en Agisoft Metashape;
+- control geométrico mediante scale bars;
+- auditoría y comparación SfM–IMU;
+- calibración radiométrica con panel de reflectancia;
+- generación de ortomosaicos multibanda;
+- cálculo y validación de índices espectrales.
 
-## Resultado validado del caso de estudio
+## Caso de estudio
 
-| Fecha real | Capturas completas | TIFF para WebODM |
+| Fecha real | Capturas completas | TIFF multiespectrales |
 |---|---:|---:|
 | 2026-05-28 | 177 | 708 |
 | 2026-07-10 | 314 | 1,256 |
@@ -33,7 +36,59 @@ REG.TIF
 NIR.TIF
 ```
 
-Los archivos `RGB.JPG` se mantienen separados y no se incluyen en la tarea multiespectral inicial de WebODM.
+Los archivos RGB se conservan como referencia y no se mezclan con el dataset multiespectral principal.
+
+## Arquitectura del flujo
+
+```text
+Raw Sequoia TIFF
+      │
+      ▼
+Organización + auditoría
+      │
+      ├── inventario
+      ├── hashes / duplicados
+      ├── agrupación multibanda
+      └── asignación de sesión real
+      │
+      ├──────────────► WebODM / OpenDroneMap
+      │
+      ▼
+Agisoft Metashape
+      │
+      ├── importación multicámara
+      ├── alineación SfM
+      ├── control de escala
+      ├── depth maps / point cloud / mesh
+      ├── validación experimental SfM–IMU
+      ├── calibración radiométrica
+      └── ortomosaico multibanda
+      │
+      ▼
+Análisis espectral
+      ├── NDVI
+      ├── GNDVI
+      └── EVI2
+```
+
+## Estado actual
+
+- [x] Organización de datos y detección de duplicados
+- [x] Reconstrucción de sesiones reales
+- [x] Dataset multiespectral para WebODM
+- [x] Reconstrucción SfM validada para 2026-08-21
+- [x] Control de escala mediante scale bars
+- [x] Exportación de rotaciones nativas de Metashape
+- [x] Validación SfM–IMU preliminar
+- [x] Calibración radiométrica con panel
+- [x] Ortomosaico de 4 bandas
+- [x] NDVI funcional
+- [x] GNDVI disponible
+- [ ] EVI2 como producto estándar
+- [ ] Validación específica del canal Red Edge / NDRE
+- [ ] Repetición completa para mayo y julio
+- [ ] Comparación temporal
+- [ ] Segmentación por planta y extracción de estadísticas
 
 ## Estructura del repositorio
 
@@ -43,21 +98,36 @@ sequoia-webodm-pipeline/
 ├── .gitignore
 ├── scripts/
 │   ├── README.md
-│   └── sequoia_dataset_organizer.py
+│   ├── sequoia_dataset_organizer.py
+│   ├── imu/
+│   └── metashape/
 ├── docs/
 │   ├── workflow.md
-│   └── webodm_configuration.md
-└── examples/
-    ├── session_mapping.example.json
-    └── session_mapping_by_folder.example.json
+│   ├── webodm_configuration.md
+│   ├── metashape_workflow.md
+│   ├── imu_validation.md
+│   ├── radiometric_calibration.md
+│   └── limitations.md
+├── examples/
+│   ├── session_mapping.example.json
+│   └── session_mapping_by_folder.example.json
+└── config/
 ```
 
-## Requisitos
+## Requisitos básicos
+
+### Organización del dataset
 
 - Python 3.9 o superior
-- No requiere paquetes externos
+- El organizador principal no requiere paquetes externos.
 
-## Uso
+### Reconstrucción y análisis
+
+- Agisoft Metashape Professional 2.2
+- ExifTool para auditorías de metadatos
+- Python 3 para scripts auxiliares de validación
+
+## Uso del organizador
 
 La carpeta base debe contener:
 
@@ -67,18 +137,14 @@ Fotos Parrot Sequoia/
 └── SD/
 ```
 
-### 1. Diagnóstico
+### Diagnóstico
 
 ```bash
 python3 scripts/sequoia_dataset_organizer.py \
   --base "/ruta/Fotos Parrot Sequoia"
 ```
 
-Esto genera reportes CSV sin copiar ni modificar fotografías.
-
-### 2. Asignación de fechas mediante bitácora
-
-El ejemplo validado usa rangos de carpetas por fuente:
+### Asignación de fechas mediante bitácora
 
 ```bash
 python3 scripts/sequoia_dataset_organizer.py \
@@ -86,23 +152,7 @@ python3 scripts/sequoia_dataset_organizer.py \
   --session-map examples/session_mapping_by_folder.example.json
 ```
 
-Formato del JSON:
-
-```json
-{
-  "2026-05-28": [
-    {
-      "source": "INTERNA",
-      "folder_start": 51,
-      "folder_end": 215
-    }
-  ]
-}
-```
-
-### 3. Crear el dataset final
-
-La copia final requiere explícitamente `--copy-final` y un mapa de sesiones:
+### Crear dataset final
 
 ```bash
 python3 scripts/sequoia_dataset_organizer.py \
@@ -111,59 +161,24 @@ python3 scripts/sequoia_dataset_organizer.py \
   --copy-final
 ```
 
-Opcionalmente:
+## Documentación metodológica
 
-```bash
---no-rgb
---no-incomplete
-```
+- [Flujo general](docs/workflow.md)
+- [Configuración WebODM](docs/webodm_configuration.md)
+- [Reconstrucción SfM en Metashape](docs/metashape_workflow.md)
+- [Validación SfM–IMU](docs/imu_validation.md)
+- [Calibración radiométrica](docs/radiometric_calibration.md)
+- [Limitaciones y decisiones metodológicas](docs/limitations.md)
 
-## Salida
+## Principio de seguridad de datos
 
-Los reportes se guardan en:
-
-```text
-Sequoia_Organizado/Reportes/
-├── captures.csv
-├── duplicates.csv
-├── unrecognized.csv
-├── final_manifest.csv
-└── summary_by_real_date.csv
-```
-
-Cuando se usa `--copy-final`:
-
-```text
-Sequoia_Organizado/
-└── Sequoia_Final_WebODM/
-    ├── Sesion_YYYY-MM-DD/
-    │   ├── WebODM_Multiespectral/
-    │   └── RGB_Referencia/
-    └── Capturas_Incompletas/
-```
-
-## Principio de seguridad
-
-Los archivos originales no se renombran, no se mueven y no se modifican. El pipeline trabaja mediante inventario, hashes y copias hacia nuevas carpetas.
-
-## WebODM
-
-El dataset final para WebODM contiene únicamente las bandas multiespectrales completas. Se recomienda procesar cada sesión real por separado.
-
-Consulta `docs/webodm_configuration.md` para una configuración inicial.
+Los archivos originales no se renombran, no se mueven y no se modifican. El pipeline trabaja mediante inventarios, hashes, metadatos y copias hacia carpetas nuevas.
 
 ## Datos no incluidos
 
-Este repositorio no contiene TIFF/JPG originales, archivos `.dat`, nubes de puntos ni productos WebODM.
+El repositorio no contiene TIFF/JPG originales, archivos `.DAT`, proyectos `.psx`, nubes de puntos completas ni ortomosaicos de gran tamaño.
 
-## Versión
-**Estado actual de desarrollo:**
-- Organización de los conjuntos de datos: validada
-- Reconstrucción SfM: validada para el 21-08-2026
-- Comparación SfM-IMU: experimental
-- Calibración de reflectancia: implementada
-- Ortomosaico de 4 bandas: validado
-- NDVI: validado para uso en flujos de trabajo
-- GNDVI: disponible
-- NDRE: bajo revisión radiométrica
-- Replicación de mayo/julio: pendiente
+## Versionado
+
+- **v0.1.0** — organización y preparación del dataset para WebODM.
+- **v0.2.0 (en desarrollo)** — SfM en Metashape, validación IMU, calibración radiométrica y análisis espectral.
