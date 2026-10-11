@@ -12,7 +12,7 @@ El proyecto nació como un organizador seguro de imágenes almacenadas entre la 
 - reconstrucción de sesiones reales a partir de bitácora;
 - preparación de datasets multiespectrales para WebODM;
 - reconstrucción SfM independiente en Agisoft Metashape;
-- control geométrico mediante scale bars;
+- control geométrico mediante barras de escala;
 - auditoría y comparación SfM–IMU;
 - calibración radiométrica con panel de reflectancia;
 - generación de ortomosaicos multibanda;
@@ -41,7 +41,7 @@ Los archivos RGB se conservan como referencia y no se mezclan con el dataset mul
 ## Arquitectura del flujo
 
 ```text
-Raw Sequoia TIFF
+TIFF originales de Sequoia
       │
       ▼
 Organización + auditoría
@@ -59,7 +59,7 @@ Agisoft Metashape
       ├── importación multicámara
       ├── alineación SfM
       ├── control de escala
-      ├── depth maps / point cloud / mesh
+      ├── mapas de profundidad / nube de puntos / malla
       ├── validación experimental SfM–IMU
       ├── calibración radiométrica
       └── ortomosaico multibanda
@@ -77,7 +77,7 @@ Análisis espectral
 - [x] Reconstrucción de sesiones reales
 - [x] Dataset multiespectral para WebODM
 - [x] Reconstrucción SfM validada para 2026-08-21
-- [x] Control de escala mediante scale bars
+- [x] Control de escala mediante barras de escala
 - [x] Exportación de rotaciones nativas de Metashape
 - [x] Validación SfM–IMU preliminar
 - [x] Calibración radiométrica con panel
@@ -104,14 +104,17 @@ sequoia-webodm-pipeline/
 ├── docs/
 │   ├── workflow.md
 │   ├── webodm_configuration.md
-│   ├── metashape_workflow.md
-│   ├── imu_validation.md
-│   ├── radiometric_calibration.md
-│   └── limitations.md
+│   ├── flujo_metashape.md
+│   ├── validacion_sfm_imu.md
+│   ├── calibracion_radiometrica.md
+│   ├── indices_vegetacion.md
+│   └── limitaciones.md
 ├── examples/
 │   ├── session_mapping.example.json
 │   └── session_mapping_by_folder.example.json
 └── config/
+    ├── panel_reflectancia_batch4001.csv
+    └── parametros_metashape.yaml
 ```
 
 ## Requisitos básicos
@@ -164,11 +167,12 @@ python3 scripts/sequoia_dataset_organizer.py \
 ## Documentación metodológica
 
 - [Flujo general](docs/workflow.md)
-- [Configuración WebODM](docs/webodm_configuration.md)
-- [Reconstrucción SfM en Metashape](docs/metashape_workflow.md)
-- [Validación SfM–IMU](docs/imu_validation.md)
-- [Calibración radiométrica](docs/radiometric_calibration.md)
-- [Limitaciones y decisiones metodológicas](docs/limitations.md)
+- [Configuración de WebODM](docs/webodm_configuration.md)
+- [Reconstrucción SfM en Metashape](docs/flujo_metashape.md)
+- [Validación SfM–IMU](docs/validacion_sfm_imu.md)
+- [Calibración radiométrica](docs/calibracion_radiometrica.md)
+- [Índices de vegetación](docs/indices_vegetacion.md)
+- [Limitaciones y decisiones metodológicas](docs/limitaciones.md)
 
 ## Principio de seguridad de datos
 
