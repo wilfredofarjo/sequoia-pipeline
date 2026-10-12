@@ -36,6 +36,18 @@ Este documento reúne las fuentes técnicas y bibliográficas utilizadas para co
    DOI: https://doi.org/10.1016/j.rse.2008.06.006  
    Referencia utilizada para justificar EVI2 como alternativa al EVI clásico cuando no se dispone de banda azul.
 
+8. **Pérez-Chimal, R. J., Rivera-Romero, C. A., Estudillo-Ayala, J. M., Sandoval-Aréchiga, R., Barrientos-García, A., & Muñoz-Minjares, J. U. (2026). _Extraction of Plant Physiological Features Using Multispectral Imaging and Spectrophotometry: A Systematic Review Highlighting Research Gaps for Stenocereus spp._ AgriEngineering, 8, 162.**  
+   DOI: https://doi.org/10.3390/agriengineering8050162  
+   Utilizada para fundamentar la selección de NDVI, GNDVI, NDRE y bandas NIR/Red Edge, así como la necesidad de calibración radiométrica, control de iluminación y validación metodológica.
+
+9. **Zandi, A., Hosseinirad, S., Kashani Zadeh, H., Tavakolian, K., Cho, B.-K., Vasefi, F., Kim, M. S., & Tavakolian, P. (2025). _A systematic review of multi-mode analytics for enhanced plant stress evaluation_. Frontiers in Plant Science, 16, 1545025.**  
+   DOI: https://doi.org/10.3389/fpls.2025.1545025  
+   Utilizada para relacionar NIR, Red Edge y otros modos espectrales con respuestas de estrés, cambios fisiológicos y síntomas estructurales de la planta.
+
+10. **Haque, M. A., Reza, M. N., Ali, M., Karim, M. R., Ahmed, S., Lee, K.-D., Khang, Y. H., & Chung, S.-O. (2024). _Effects of Environmental Conditions on Vegetation Indices from Multispectral Images: A Review_. Korean Journal of Remote Sensing, 40(4), 319–341.**  
+    DOI: https://doi.org/10.7780/kjrs.2024.40.4.1  
+    Utilizada para fundamentar el uso comparado de NDVI, NDRE, GNDVI y EVI y para documentar la influencia de iluminación, ambiente y calibración sobre la reflectancia y los índices.
+
 ## Nota sobre NDVI y NDRE
 
 El NDVI se utiliza en este repositorio como índice principal por su respuesta espacial coherente en el dataset validado. NDRE fue evaluado de forma exploratoria, pero quedó fuera del análisis cuantitativo principal debido a la relación radiométrica inesperada entre NIR y Red Edge observada en la sesión 2026-08-21.
