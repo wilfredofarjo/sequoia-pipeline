@@ -52,3 +52,47 @@ flowchart TD
 ## Principio general
 
 Cuando una fuente de información no es confiable o está ausente, el flujo no intenta reconstruirla artificialmente. Se documenta la limitación y se utiliza la fuente independiente más apropiada disponible, manteniendo separadas las funciones de tiempo, posición, orientación, escala y reflectancia.
+
+
+## Decisión sobre caracterización lumínica
+
+### Duda metodológica
+
+El experimento se desarrolló con iluminación artificial mediante lámparas Spider Farmer, mientras que el factor experimental principal correspondió a cambios en la duración diaria de luz.
+
+Era necesario diferenciar entre potencia o intensidad de las lámparas, cantidad de fotones recibidos por el dosel y duración diaria del periodo luminoso.
+
+### Decisión
+
+La duración de luz se considera el factor experimental principal.
+
+La intensidad de operación de las lámparas se mantuvo estable y las plantas fueron sometidas a una simulación del horario semanal de luz correspondiente a las semanas 47–9.
+
+La caracterización física de la iluminación debe expresarse mediante **PPFD** a nivel del dosel y, cuando corresponda, mediante **DLI** calculado a partir de PPFD y fotoperiodo.
+
+### Estado
+
+Los datos medidos de PPFD se encuentran pendientes de incorporación al repositorio.
+
+Hasta su incorporación, la documentación debe distinguir claramente entre:
+
+- configuración nominal de las lámparas;
+- fotoperiodo programado;
+- medición fotónica real recibida por el dosel.
+
+
+## Decisión sobre la unidad de análisis
+
+### Duda metodológica
+
+El arreglo experimental contiene 30 plantas con pesos diferentes y posiciones conocidas dentro del contenedor.
+
+Era posible considerar cada planta individual, grupos de plantas según peso, zonas espaciales del contenedor o el dosel completo como unidad.
+
+### Decisión actual
+
+Para la primera etapa del análisis se utiliza el **dosel completo de las 30 plantas como unidad de análisis**.
+
+La decisión se tomó para reducir complejidad de segmentación y evitar introducir errores adicionales de delimitación individual antes de validar completamente el procesamiento multiespectral.
+
+La posición y el peso individual se conservan para una futura etapa de segmentación por planta, rango de peso o sector.
