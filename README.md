@@ -13,7 +13,7 @@ El proyecto nació como un organizador seguro de imágenes almacenadas entre la 
 - preparación de datasets multiespectrales para WebODM;
 - reconstrucción SfM independiente en Agisoft Metashape;
 - control geométrico mediante barras de escala;
-- auditoría y comparación SfM–IMU (**Inertial Measurement Unit / Unidad de Medición Inercial**);
+- auditoría y comparación SfM–IMU (**Inertial Measurement Unit / Unidad de Medición Inercial**) como referencia complementaria de orientación ante la ausencia de coordenadas GPS XY válidas;
 - calibración radiométrica con panel de reflectancia;
 - generación de ortomosaicos multibanda;
 - cálculo y validación de índices espectrales.
