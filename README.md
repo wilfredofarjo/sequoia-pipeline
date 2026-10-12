@@ -1,6 +1,6 @@
-# Sequoia WebODM Pipeline
+# Sequoia Pipeline
 
-Flujo reproducible para organizar, auditar, reconstruir y analizar imágenes multiespectrales **Parrot Sequoia** mediante **WebODM / OpenDroneMap** y **Agisoft Metashape**.
+Pipeline reproducible para organizar, auditar, reconstruir, calibrar y analizar imágenes multiespectrales **Parrot Sequoia**, integrando herramientas de fotogrametría, procesamiento radiométrico y análisis espectral mediante **WebODM / OpenDroneMap**, **Agisoft Metashape** y scripts reproducibles.
 
 ## Alcance
 
@@ -103,7 +103,7 @@ La imagen se presenta como evidencia visual del pipeline. El análisis cuantitat
 ## Estructura del repositorio
 
 ```text
-sequoia-webodm-pipeline/
+sequoia-pipeline/
 ├── README.md
 ├── .gitignore
 ├── scripts/
