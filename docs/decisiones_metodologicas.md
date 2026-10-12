@@ -205,3 +205,14 @@ Para la primera etapa del análisis se utiliza el **dosel completo de las 30 pla
 La decisión se tomó para reducir complejidad de segmentación y evitar introducir errores adicionales de delimitación individual antes de validar completamente el procesamiento multiespectral.
 
 La posición y el peso individual se conservan para una futura etapa de segmentación por planta, rango de peso o sector.
+
+
+## Fundamento bibliográfico de los índices
+
+La selección de NIR, NDVI, GNDVI, EVI2 y la evaluación inicial de NDRE no se definió únicamente a partir del comportamiento del ortomosaico. También se apoyó en literatura de revisión sobre fisiología vegetal, estrés y respuesta de índices multiespectrales.
+
+- **Pérez-Chimal et al. (2026)** respaldan el uso de NDVI como indicador ampliamente utilizado de vigor, biomasa y estructura del dosel y documentan la relevancia de NDRE, GNDVI, Red Edge y NIR para clorofila y estrés.
+- **Haque et al. (2024)** documentan NDVI, NDRE, GNDVI y EVI entre los índices comunes y advierten sobre saturación de NDVI y sensibilidad de los índices a condiciones de iluminación y calibración.
+- **Zandi et al. (2025)** relacionan cambios en NIR y Red Edge con respuestas fisiológicas y de estrés, lo que sustenta el seguimiento de la señal NIR en este experimento.
+
+La decisión metodológica es mantener una separación entre **fundamento bibliográfico** y **validación del dataset**. Un índice puede estar bien respaldado en la literatura y, aun así, ser excluido temporalmente si el control de calidad radiométrico del experimento no es satisfactorio. Este es actualmente el caso de NDRE.
