@@ -137,3 +137,11 @@ La reconstrucción se considera suficientemente estable para análisis espectral
 3. las scale bars principales mantienen errores compatibles con el montaje;
 4. el ortomosaico conserva las cuatro bandas;
 5. las imágenes de calibración permanecen fuera de la reconstrucción geométrica.
+
+
+## Referencias relacionadas
+
+- Agisoft LLC. (2025). *Agisoft Metashape User Manual — Professional Edition, Version 2.2*.
+- Parrot. *Sequoia User Guide*.
+
+Véase también [Referencias y documentos utilizados](referencias.md).
