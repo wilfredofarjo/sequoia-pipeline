@@ -71,6 +71,14 @@ Análisis espectral
       └── EVI2
 ```
 
+## Ejemplo de resultado
+
+La siguiente imagen muestra el **NDVI** calculado para el ortomosaico multiespectral de la sesión **2026-08-21**, actualmente la única sesión con el flujo completo validado.
+
+![NDVI de la sesión 2026-08-21](docs/img/ndvi_sesion_2026-08-21.jpg)
+
+La imagen se presenta como evidencia visual del pipeline. El análisis cuantitativo se realiza sobre los rásteres exportados y las estadísticas derivadas, no sobre la visualización.
+
 ## Estado actual
 
 - [x] Organización de datos y detección de duplicados
@@ -110,6 +118,8 @@ sequoia-webodm-pipeline/
 │   ├── validacion_sfm_imu.md
 │   ├── calibracion_radiometrica.md
 │   ├── indices_vegetacion.md
+│   ├── resultados_visuales.md
+│   ├── decisiones_metodologicas.md
 │   └── limitaciones.md
 ├── examples/
 │   ├── session_mapping.example.json
@@ -175,6 +185,7 @@ python3 scripts/sequoia_dataset_organizer.py \
 - [Validación SfM–IMU](docs/validacion_sfm_imu.md)
 - [Calibración radiométrica](docs/calibracion_radiometrica.md)
 - [Índices de vegetación](docs/indices_vegetacion.md)
+- [Resultados visuales](docs/resultados_visuales.md)
 - [Limitaciones y decisiones metodológicas](docs/limitaciones.md)
 - [Diagrama y registro de decisiones metodológicas](docs/decisiones_metodologicas.md)
 - [Referencias y documentos utilizados](docs/referencias.md)

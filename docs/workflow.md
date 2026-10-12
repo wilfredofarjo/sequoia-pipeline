@@ -1,4 +1,4 @@
-# Workflow
+# Flujo general
 
 ## 1. Adquisición
 
@@ -185,3 +185,16 @@ y el cambio relativo puede expresarse como:
 Este enfoque permite conservar simultáneamente la magnitud absoluta de la respuesta espectral y la dirección y magnitud del cambio temporal.
 
 Las variables inicialmente consideradas son NIR, NDVI y GNDVI; EVI2 puede incorporarse una vez estandarizado. NDRE permanece excluido temporalmente hasta completar la validación radiométrica del canal Red Edge.
+
+
+## Ejemplo visual del resultado
+
+Como evidencia del flujo de reconstrucción y cálculo de índices, se incluye una vista del **NDVI** obtenida a partir del ortomosaico multiespectral de la sesión **2026-08-21**.
+
+![Visualización del NDVI de la sesión 2026-08-21](img/ndvi_sesion_2026-08-21.jpg)
+
+**Figura.** Visualización del NDVI sobre el ortomosaico multiespectral generado en Agisoft Metashape Professional. La imagen se utiliza como control visual del producto obtenido después de la reconstrucción SfM, el escalado métrico, la calibración radiométrica y el cálculo del índice.
+
+Esta figura no sustituye al producto analítico. Los análisis posteriores deben realizarse sobre los rásteres exportados y las estadísticas derivadas del dosel.
+
+Véase [Resultados visuales](resultados_visuales.md) para la documentación gráfica del pipeline.
