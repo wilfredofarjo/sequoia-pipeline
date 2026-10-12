@@ -78,3 +78,38 @@ No se versionan en GitHub:
 - ortomosaicos completos.
 
 El repositorio conserva código, parámetros, reportes ligeros y figuras de control.
+
+
+## Dependencia de la bitácora para las fechas experimentales
+
+Las fechas de sesión no se derivan de los metadatos temporales de los TIFF. Las tres fechas experimentales fueron tomadas de la bitácora de campo y utilizadas como referencia externa para particionar el dataset.
+
+La información de nombres, carpetas, secuencias y fuente de almacenamiento se utiliza para asignar capturas a esas fechas, no para establecer fechas nuevas.
+
+## Validación multi-sesión pendiente
+
+La metodología completa se ha comprobado hasta ahora únicamente con la sesión 2026-08-21.
+
+Las sesiones 2026-05-28 y 2026-07-10 están pendientes de:
+- reconstrucción SfM completa;
+- control de escala;
+- calibración radiométrica;
+- generación de ortomosaico;
+- cálculo de índices;
+- control de calidad radiométrico y geométrico.
+
+Hasta completar esta réplica, no se asume equivalencia automática entre sesiones.
+
+## Alcance de una futura etapa de ML
+
+El uso de aprendizaje automático será una etapa posterior y no debe interpretarse como un componente ya validado del pipeline.
+
+Antes de entrenar modelos se deberá definir:
+- unidad de análisis;
+- variables predictoras;
+- variable objetivo;
+- estrategia de partición de datos;
+- prevención de fuga de información entre fechas o plantas;
+- criterio de validación externa o temporal.
+
+La consistencia de los índices entre sesiones es un requisito previo.
