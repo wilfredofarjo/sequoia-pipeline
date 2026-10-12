@@ -9,7 +9,7 @@ El proyecto nació como un organizador seguro de imágenes almacenadas entre la 
 - inventario y organización de imágenes;
 - identificación de bandas `GRE`, `RED`, `REG`, `NIR` y RGB;
 - detección de duplicados mediante SHA-256;
-- reconstrucción de sesiones reales a partir de bitácora;
+- reconstrucción de sesiones reales usando como referencia las fechas registradas en bitácora, no las fechas embebidas de la cámara;
 - preparación de datasets multiespectrales para WebODM;
 - reconstrucción SfM independiente en Agisoft Metashape;
 - control geométrico mediante barras de escala;
@@ -87,8 +87,10 @@ Análisis espectral
 - [ ] EVI2 como producto estándar
 - [ ] Validación específica del canal Red Edge / NDRE
 - [ ] Repetición completa para mayo y julio
-- [ ] Comparación temporal
+- [ ] Validación completa de las sesiones 2026-05-28 y 2026-07-10
+- [ ] Comparación temporal entre sesiones
 - [ ] Segmentación por planta y extracción de estadísticas
+- [ ] Propuesta de aprendizaje automático (ML) a partir de índices y variables derivadas
 
 ## Estructura del repositorio
 
@@ -186,4 +188,12 @@ El repositorio no contiene TIFF/JPG originales, archivos `.DAT`, proyectos `.psx
 ## Versionado
 
 - **v0.1.0** — organización y preparación del dataset para WebODM.
-- **v0.2.0 (en desarrollo)** — SfM en Metashape, validación IMU, calibración radiométrica y análisis espectral.
+- **v0.2.0** — SfM en Metashape, validación IMU, calibración radiométrica y análisis espectral inicial.
+- **v0.3.0 (en desarrollo)** — scripts reproducibles, decisiones metodológicas explícitas, validación multi-sesión y preparación para análisis ML.
+
+
+## Alcance de la validación
+
+Hasta el momento, el flujo completo ha sido validado únicamente para la sesión **2026-08-21**. Las sesiones **2026-05-28** y **2026-07-10** deben reproducir el mismo procedimiento antes de realizar inferencias temporales o entrenar modelos de aprendizaje automático.
+
+El objetivo futuro es generar una propuesta de **ML** basada en índices espectrales y variables derivadas del fenotipado. Esa etapa se considera posterior y dependerá de la consistencia entre sesiones, la definición de unidades experimentales y la disponibilidad de variables objetivo.
