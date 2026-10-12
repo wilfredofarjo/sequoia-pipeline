@@ -4,7 +4,7 @@
 
 La siguiente figura muestra una visualización del **NDVI** calculado sobre el ortomosaico multiespectral generado en Agisoft Metashape Professional para la sesión del **21 de agosto de 2026**.
 
-![Visualización del NDVI de la sesión 2026-08-21](img/ndvi_sesion_2026-08-21.jpg)
+![Visualización del NDVI de la sesión 2026-08-21](img/ndvi_sesion_2026-08-21.png)
 
 **Figura 1.** Visualización del NDVI sobre el ortomosaico multiespectral de la sesión 2026-08-21. La escala de color representa valores del índice entre 0 y 1. Esta imagen se incluye como evidencia visual del flujo de reconstrucción SfM, escalado métrico, calibración radiométrica y cálculo de índices.
 
