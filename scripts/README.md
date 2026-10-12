@@ -20,7 +20,7 @@ Versión pública derivada del flujo estable v2.7:
 
 ## Auditoría IMU
 
-En este repositorio, **IMU** significa **Inertial Measurement Unit** (**Unidad de Medición Inercial**). Para el flujo Parrot Sequoia se utilizan principalmente los metadatos de orientación **Yaw, Pitch y Roll** registrados por el sensor. Estos valores se auditan y posteriormente se comparan con las orientaciones estimadas de forma independiente mediante SfM en Metashape.
+En este repositorio, **IMU** significa **Inertial Measurement Unit** (**Unidad de Medición Inercial**). Su uso se incorporó porque las imágenes auditadas no disponían de coordenadas GPS XY válidas (`GPSStatus = Measurement Void`). Ante esa ausencia, se aprovecharon los metadatos de **orientación** registrados por el equipo —principalmente **Yaw, Pitch y Roll**— como información complementaria para contrastar la orientación estimada de forma independiente mediante SfM en Metashape. Estos datos IMU no sustituyen al GPS ni proporcionan por sí solos una posición absoluta XY; describen la actitud/orientación del sensor.
 
 ### v2.8.1 — `imu/auditar_imu_v2_8_1.py`
 
