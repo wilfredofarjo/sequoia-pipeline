@@ -75,7 +75,7 @@ Análisis espectral
 
 La siguiente imagen muestra el **NDVI** calculado para el ortomosaico multiespectral de la sesión **2026-08-21**, actualmente la única sesión con el flujo completo validado.
 
-![NDVI de la sesión 2026-08-21](docs/img/ndvi_sesion_2026-08-21.jpg)
+![NDVI de la sesión 2026-08-21](docs/img/ndvi_sesion_2026-08-21.png)
 
 La imagen se presenta como evidencia visual del pipeline. El análisis cuantitativo se realiza sobre los rásteres exportados y las estadísticas derivadas, no sobre la visualización.
 
