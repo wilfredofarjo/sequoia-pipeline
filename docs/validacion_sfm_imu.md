@@ -1,5 +1,9 @@
 # Validación SfM–IMU
 
+## Definición de IMU
+
+**IMU** significa **Inertial Measurement Unit** (**Unidad de Medición Inercial**). En este proyecto, el análisis IMU se centra principalmente en los metadatos de orientación **Yaw, Pitch y Roll** registrados por Parrot Sequoia y utilizados para compararlos con las orientaciones estimadas de forma independiente mediante SfM.
+
 ## Objetivo
 
 Evaluar la coherencia entre las orientaciones registradas por la IMU de Parrot Sequoia y la orientación estimada de manera independiente mediante SfM en Metashape.
