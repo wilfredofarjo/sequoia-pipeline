@@ -39,6 +39,8 @@ ajuste_adaptativo_modelo_camara: true
 
 ## Control de escala
 
+De acuerdo con la bitácora experimental, la medición física del contenedor se realizó el **22 de mayo de 2026**. Estas mediciones se utilizaron posteriormente como referencia métrica para escalar el modelo SfM en Metashape mediante marcadores y barras de escala.
+
 El contenedor experimental tiene dimensiones nominales de:
 
 - lado largo: 5.80 m
@@ -52,6 +54,8 @@ CONT_A–CONT_D = 5.80 m
 ```
 
 Las scale bars asociadas a `CONT_C` se consideran referencias geométricas aproximadas porque el punto físico exacto de la esquina no era visible en las imágenes.
+
+El procedimiento consistió en identificar en las imágenes puntos físicos correspondientes al contenedor, crear los marcadores `CONT_A`, `CONT_B`, `CONT_C` y `CONT_D`, proyectarlos en múltiples fotografías y construir barras de escala entre pares de marcadores. Las distancias medidas físicamente el 22 de mayo de 2026 se asignaron a las barras de control para transferir la escala real al modelo.
 
 La precisión de las scale bars utilizada para la optimización fue:
 

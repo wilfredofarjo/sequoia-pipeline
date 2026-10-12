@@ -1,5 +1,9 @@
 # Validación SfM–IMU
 
+## Definición de IMU
+
+**IMU** significa **Inertial Measurement Unit** (**Unidad de Medición Inercial**). En este proyecto, su análisis se incorporó como una fuente complementaria porque las imágenes auditadas no contenían coordenadas GPS XY utilizables y presentaban `GPSStatus = Measurement Void`. Por ello se recurrió a los metadatos de **orientación del sensor** —principalmente **Yaw, Pitch y Roll**— para compararlos con las orientaciones estimadas de forma independiente mediante SfM.
+
 ## Objetivo
 
 Evaluar la coherencia entre las orientaciones registradas por la IMU de Parrot Sequoia y la orientación estimada de manera independiente mediante SfM en Metashape.
@@ -15,7 +19,7 @@ La auditoría de TIFF mostró:
 - Yaw, Pitch y Roll presentes para la mayoría de capturas;
 - fechas internas de cámara no confiables.
 
-Por esta razón, la bitácora de campo se mantiene como fuente de verdad temporal.
+Por esta razón, la bitácora de campo se mantiene como fuente de verdad temporal y la reconstrucción geométrica se desarrolla en un sistema de coordenadas local. La IMU se utiliza únicamente como referencia de **actitud/orientación** del equipo; no reemplaza la georreferenciación GPS ni permite recuperar por sí sola una posición absoluta XY.
 
 ## Inventario IMU
 

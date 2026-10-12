@@ -9,11 +9,11 @@ El proyecto nació como un organizador seguro de imágenes almacenadas entre la 
 - inventario y organización de imágenes;
 - identificación de bandas `GRE`, `RED`, `REG`, `NIR` y RGB;
 - detección de duplicados mediante SHA-256;
-- reconstrucción de sesiones reales a partir de bitácora;
+- reconstrucción de sesiones reales usando como referencia las fechas registradas en bitácora, no las fechas embebidas de la cámara;
 - preparación de datasets multiespectrales para WebODM;
 - reconstrucción SfM independiente en Agisoft Metashape;
 - control geométrico mediante barras de escala;
-- auditoría y comparación SfM–IMU;
+- auditoría y comparación SfM–IMU (**Inertial Measurement Unit / Unidad de Medición Inercial**) como referencia complementaria de orientación ante la ausencia de coordenadas GPS XY válidas;
 - calibración radiométrica con panel de reflectancia;
 - generación de ortomosaicos multibanda;
 - cálculo y validación de índices espectrales.
@@ -87,8 +87,10 @@ Análisis espectral
 - [ ] EVI2 como producto estándar
 - [ ] Validación específica del canal Red Edge / NDRE
 - [ ] Repetición completa para mayo y julio
-- [ ] Comparación temporal
+- [ ] Validación completa de las sesiones 2026-05-28 y 2026-07-10
+- [ ] Comparación temporal entre sesiones
 - [ ] Segmentación por planta y extracción de estadísticas
+- [ ] Propuesta de aprendizaje automático (ML) a partir de índices y variables derivadas
 
 ## Estructura del repositorio
 
@@ -167,12 +169,14 @@ python3 scripts/sequoia_dataset_organizer.py \
 ## Documentación metodológica
 
 - [Flujo general](docs/workflow.md)
+- [Diseño experimental y unidad de análisis](docs/diseno_experimental.md)
 - [Configuración de WebODM](docs/webodm_configuration.md)
 - [Reconstrucción SfM en Metashape](docs/flujo_metashape.md)
 - [Validación SfM–IMU](docs/validacion_sfm_imu.md)
 - [Calibración radiométrica](docs/calibracion_radiometrica.md)
 - [Índices de vegetación](docs/indices_vegetacion.md)
 - [Limitaciones y decisiones metodológicas](docs/limitaciones.md)
+- [Diagrama y registro de decisiones metodológicas](docs/decisiones_metodologicas.md)
 - [Referencias y documentos utilizados](docs/referencias.md)
 
 ## Principio de seguridad de datos
@@ -186,4 +190,38 @@ El repositorio no contiene TIFF/JPG originales, archivos `.DAT`, proyectos `.psx
 ## Versionado
 
 - **v0.1.0** — organización y preparación del dataset para WebODM.
-- **v0.2.0 (en desarrollo)** — SfM en Metashape, validación IMU, calibración radiométrica y análisis espectral.
+- **v0.2.0** — SfM en Metashape, validación IMU, calibración radiométrica y análisis espectral inicial.
+- **v0.3.0 (en desarrollo)** — scripts reproducibles, decisiones metodológicas explícitas, validación multi-sesión y preparación para análisis ML.
+
+
+## Alcance de la validación
+
+Hasta el momento, el flujo completo ha sido validado únicamente para la sesión **2026-08-21**. Las sesiones **2026-05-28** y **2026-07-10** deben reproducir el mismo procedimiento antes de realizar inferencias temporales o entrenar modelos de aprendizaje automático.
+
+El objetivo futuro es generar una propuesta de **ML** basada en índices espectrales y variables derivadas del fenotipado. Esa etapa se considera posterior y dependerá de la consistencia entre sesiones, la definición de unidades experimentales y la disponibilidad de variables objetivo.
+
+
+## Diseño experimental
+
+El caso de estudio corresponde a **30 plantas de piña MD2** distribuidas en una matriz 2 × 15 dentro de un ambiente controlado.
+
+- Siembra: **2025-10-16**
+- Material de siembra: **hijo basal**
+- Peso inicial de siembra: **≈300 g por planta**
+- Ingreso a ambiente controlado: **2026-05-14**
+- Sesiones de adquisición: **2026-05-28**, **2026-07-10** y **2026-08-21**
+
+La posición del arreglo se relaciona con el sistema local del contenedor mediante referencias físicas:
+
+```text
+Planta 1  → CONT_D
+Planta 29 → CONT_B
+```
+
+La unidad principal de análisis actual es el **dosel completo de las 30 plantas**.
+
+El ambiente controlado utilizó lámparas **Spider Farmer SF-G4500** operadas con intensidad nominal estable; el factor que varió fue el **fotoperiodo**, siguiendo una simulación del horario semanal de luz correspondiente al periodo de semanas 47–9.
+
+La medición fotónica mediante **PPFD** está pendiente de incorporación documental.
+
+El flujo completo se ha validado hasta ahora únicamente para la sesión **2026-08-21**. Mayo y julio permanecen pendientes de procesamiento y validación completa.
