@@ -58,3 +58,11 @@ NDVI_2026-08-21.tif
 GNDVI_2026-08-21.tif
 EVI2_2026-08-21.tif
 ```
+
+
+## Referencias relacionadas
+
+- Gitelson, Kaufman & Merzlyak (1996) — uso del canal verde en índices de vegetación.
+- Jiang, Huete, Didan & Miura (2008) — EVI2 sin banda azul.
+
+Véase también [Referencias y documentos utilizados](referencias.md).
