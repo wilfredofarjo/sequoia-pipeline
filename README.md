@@ -173,6 +173,7 @@ python3 scripts/sequoia_dataset_organizer.py \
 - [Calibración radiométrica](docs/calibracion_radiometrica.md)
 - [Índices de vegetación](docs/indices_vegetacion.md)
 - [Limitaciones y decisiones metodológicas](docs/limitaciones.md)
+- [Referencias y documentos utilizados](docs/referencias.md)
 
 ## Principio de seguridad de datos
 

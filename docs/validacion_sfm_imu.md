@@ -97,3 +97,11 @@ La reconstrucción geométrica no depende de esta validación y puede continuar 
 ## Próxima validación recomendada
 
 Comparar rotaciones relativas entre pares de imágenes consecutivas para evaluar si IMU y SfM describen el mismo movimiento angular sin depender de orientación absoluta, norte, ENU/NED, offsets constantes o boresight.
+
+
+## Referencias relacionadas
+
+- Parrot. *Sequoia User Guide* — convenciones de orientación y metadatos del sensor.
+- Agisoft LLC. (2025). *Agisoft Metashape User Manual — Professional Edition, Version 2.2* — orientación estimada y exportación de cámaras/referencias.
+
+Véase también [Referencias y documentos utilizados](referencias.md).
