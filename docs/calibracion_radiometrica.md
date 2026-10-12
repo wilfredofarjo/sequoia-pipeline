@@ -138,3 +138,12 @@ Para exportar un índice desde Metashape:
 - mantener la resolución nativa cuando sea viable.
 
 Para trazabilidad, se recomienda un archivo por índice y sesión.
+
+
+## Referencias relacionadas
+
+- Parrot. *Sequoia User Guide* — panel, bandas y sensor solar.
+- Agisoft LLC. (2025). *Agisoft Metashape User Manual — Professional Edition, Version 2.2*.
+- Agisoft LLC. *Reflectance calibration / multispectral processing workflow*.
+
+Véase también [Referencias y documentos utilizados](referencias.md).
